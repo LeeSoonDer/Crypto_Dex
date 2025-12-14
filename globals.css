@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base Settings */
+:root {
+  --color-space-950: #020617;
+  --color-pixel-cyan: #22d3ee;
+}
+
+body {
+  background-color: var(--color-space-950);
+  color: white;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* --- 3D CYBER GRID BACKGROUND --- */
+.cyber-grid-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -10;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, #1e293b 0%, #020617 80%);
+}
+
+.cyber-grid {
+  position: absolute;
+  bottom: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: 
+    linear-gradient(transparent 0%, rgba(34, 211, 238, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, transparent 0%, rgba(34, 211, 238, 0.1) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: perspective(500px) rotateX(60deg);
+  animation: grid-move 4s linear infinite;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 80%, transparent 100%);
+}
+
+/* Moving the grid lines */
+@keyframes grid-move {
+  0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+  100% { transform: perspective(500px) rotateX(60deg) translateY(60px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cyber-grid {
+    animation: none;
+  }
+}
+
+/* --- MATRIX / BINARY RAIN --- */
+.binary-rain {
+  position: fixed;
+  top: -20%;
+  color: rgba(34, 211, 238, 0.05);
+  font-family: 'VT323', monospace;
+  font-size: 1.5rem;
+  user-select: none;
+  pointer-events: none;
+  z-index: -5;
+  animation: rain-fall linear infinite;
+  text-shadow: 0 0 5px rgba(34, 211, 238, 0.2);
+}
+
+@keyframes rain-fall {
+  0% { transform: translateY(-100vh); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* --- SCANLINES & CRT OVERLAY --- */
+.scanlines::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.3)
+  );
+  background-size: 100% 4px;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 150px rgba(0,0,0,0.9) inset;
+  pointer-events: none;
+  z-index: 49;
+}
+
+/* --- UTILITIES & ANIMATIONS --- */
+.text-shadow-retro {
+  text-shadow: 3px 3px 0px #000;
+}
+
+.shadow-glow-cyan {
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.3);
+}
+
+.image-pixelated {
+  image-rendering: pixelated;
+}
+
+/* Hacker Silhouette Filter */
+.filter-hacker {
+  filter: grayscale(100%) brightness(0.6) contrast(1.5) drop-shadow(0 0 10px rgba(34, 211, 238, 0.5));
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border: 1px solid #334155;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #22d3ee;
+}
+
+/* --- NEW: Physical Manual Paper Texture --- */
+.paper-texture {
+  background-color: #fdfdfd;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* --- NEW: Legendary Glow Animation --- */
+@keyframes legendary-pulse {
+  0%, 100% { box-shadow: 0 0 5px rgba(250, 204, 21, 0.5), 0 0 10px rgba(250, 204, 21, 0.2) inset; border-color: rgba(250, 204, 21, 0.8); }
+  50% { box-shadow: 0 0 15px rgba(250, 204, 21, 0.8), 0 0 20px rgba(250, 204, 21, 0.4) inset; border-color: rgba(250, 204, 21, 1); }
+}
+
+.legendary-glow {
+  animation: legendary-pulse 2s infinite ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .legendary-glow {
+    animation: none;
+    box-shadow: 0 0 5px rgba(250, 204, 21, 0.5);
+  }
+}
+
+/* --- NEW: Card Entry Animation --- */
+@keyframes card-entry {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-card-entry {
+  animation: card-entry 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-card-entry {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* --- NEW: Stats Bar Fill Animation --- */
+@keyframes bar-fill {
+  from { width: 0%; }
+}
+
+.animate-bar-fill {
+  animation: bar-fill 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-bar-fill {
+    animation: none;
+  }
+}

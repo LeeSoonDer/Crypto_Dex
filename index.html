@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CryptoDex - Space Terminal</title>
+    <meta name="description" content="A retro-styled crypto encyclopedia." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <style>
+      /* Tailwind Config Simulation */
+      :root {
+        --font-retro: 'Press Start 2P', cursive;
+        --font-terminal: 'VT323', monospace;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              retro: ['"Press Start 2P"', 'cursive'],
+              terminal: ['"VT323"', 'monospace'],
+            },
+            colors: {
+              space: {
+                950: '#020617', /* Deepest Navy/Black */
+                900: '#0f172a', /* Card Background */
+                800: '#1e293b', /* Lighter Card/Hover */
+                700: '#334155', /* Borders */
+              },
+              pixel: {
+                cyan: '#22d3ee',   /* Primary Action */
+                purple: '#d946ef', /* Secondary / Rare */
+                pink: '#ec4899',   /* Meme / Fun */
+                green: '#4ade80',  /* Success / Low Risk */
+                yellow: '#facc15', /* Warning / BTC */
+                red: '#ef4444',    /* Danger / Inactive */
+                dim: '#94a3b8',    /* Muted Text */
+              }
+            },
+            boxShadow: {
+              'pixel': '4px 4px 0 0 rgba(0,0,0,0.5)',
+              'pixel-cyan': '4px 4px 0 0 #22d3ee',
+              'pixel-purple': '4px 4px 0 0 #d946ef',
+              'glow-cyan': '0 0 15px rgba(34, 211, 238, 0.3)',
+            },
+            animation: {
+              'float': 'float 6s ease-in-out infinite',
+              'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-10px)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-space-950 text-gray-100 overflow-x-hidden selection:bg-pixel-cyan selection:text-space-950 antialiased">
+    <div id="root"></div>
+  </body>
+</html>

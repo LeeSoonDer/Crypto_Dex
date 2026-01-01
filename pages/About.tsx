@@ -117,10 +117,14 @@ export const About: React.FC = () => {
 
              {/* Footer Links */}
              <div className="flex flex-wrap gap-6">
-               <a href="#" className="flex items-center gap-2 text-black hover:bg-black hover:text-white px-2 py-1 transition-colors border border-transparent hover:border-black">
+               <a href="https://github.com/LeeSoonDer/Crypto_Dex"
+  target="_blank"
+  rel="noreferrer" className="flex items-center gap-2 text-black hover:bg-black hover:text-white px-2 py-1 transition-colors border border-transparent hover:border-black">
                  <Github className="w-5 h-5" /> SOURCE CODE
                </a>
-               <a href="#" className="flex items-center gap-2 text-black hover:bg-black hover:text-white px-2 py-1 transition-colors border border-transparent hover:border-black">
+               <a href="https://www.linkedin.com/in/lee-soon-der-b86b20260/"
+  target="_blank"
+  rel="noreferrer" className="flex items-center gap-2 text-black hover:bg-black hover:text-white px-2 py-1 transition-colors border border-transparent hover:border-black">
                  <Linkedin className="w-5 h-5" /> CREATOR
                </a>
              </div>
